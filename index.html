@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <head>
+      <script>
+        function checkTextMessage() {
+          let text = document.getElementById("text-message").innerHTML;
+          let match = text.match(/survey|win|\$|gift|card/g);
+          document.getElementById("matches").insertAdjacentHTML('beforeend', match);
+        }
+      </script>
+    </head>
+    
+    <body>
+
+      <p>(xxx)-xxx-xxxx</p>
+      <p id="text-message">Answer this survey to win an Amazon gift card for $15. http://notspam.ru/legit</p>
+
+      <button onClick="checkTextMessage()">Print match</button>
+      <p id="matches">Matches: </p>
+
+    </body>
+</html>
