@@ -4,11 +4,10 @@
         function checkTextMessage() {
           let text = document.getElementById("text-message").innerHTML;
           let match = text.match(/survey|win|\$|gift|card/g);
-          document.getElementById("matches").insertAdjacentHTML('beforeend', match);
+          document.getElementById("matches").insertAdjacentHTML('beforeend', match.join(', '));
         }
       </script>
     </head>
-    
     <body>
 
       <p>(xxx)-xxx-xxxx</p>
