@@ -4,7 +4,7 @@
       <script>
         function checkTextMessage() {
           let text = document.getElementById("text-message").innerHTML;
-          let wordLiteralMatches = text.match(/survey|win|\$|gift|card|amazon/gi);
+          let wordLiteralMatches = text.match(/survey|win|won|go to|\$|gift|card|amazon|irs|tax|must|bit.ly|bank|account|locked|log|password|username|deletion|delete|bitcoin|btc|urgent|now/gi);
           document.getElementById("matches").insertAdjacentHTML('beforeend', wordLiteralMatches.join(", "));
           document.getElementById("literal_matches_num").innerHTML = wordLiteralMatches.length;
 
@@ -16,8 +16,8 @@
     </head>
     <body onload="checkTextMessage()">
 
-      <p>(xxx)-xxx-xxxx</p>
-      <p id="text-message"><b>STRANGER:</b> Answer this survey to win an Amazon gift card for $15. http://notspam.ru/legit?utm_source=haxxor&utm_medium=email</p>
+      <h1>(xxx)-xxx-xxxx</h1>
+      <p id="text-message"><b>STRANGER:</b> Answer this survey to win an Amazon gift card for $15. Go to http://notspam.ru/legit?utm_source=haxxor&utm_medium=email</p>
       
       <div class="matchCategories">
         <p><b>Word literal matches:</b></p>
