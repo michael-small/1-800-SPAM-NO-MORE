@@ -1,20 +1,35 @@
 <!DOCTYPE html>
     <head>
+      <link rel="stylesheet" href="index.css">
       <script>
         function checkTextMessage() {
           let text = document.getElementById("text-message").innerHTML;
-          let match = text.match(/survey|win|\$|gift|card/g);
-          document.getElementById("matches").insertAdjacentHTML('beforeend', match.join(', '));
+          let wordLiteralMatches = text.match(/survey|win|\$|gift|card|amazon/gi);
+          document.getElementById("matches").insertAdjacentHTML('beforeend', wordLiteralMatches.join(", "));
+          document.getElementById("literal_matches_num").innerHTML = wordLiteralMatches.length;
+
+          let underscoreMatches = text.match(/(utm_.*?)/);
+          document.getElementById("underscore_matches").insertAdjacentHTML('beforeend', underscoreMatches.join(', '));
+          document.getElementById("underscore_matches_num").innerHTML = underscoreMatches.length;
         }
       </script>
     </head>
-    <body>
+    <body onload="checkTextMessage()">
 
       <p>(xxx)-xxx-xxxx</p>
-      <p id="text-message">Answer this survey to win an Amazon gift card for $15. http://notspam.ru/legit</p>
+      <p id="text-message"><b>STRANGER:</b> Answer this survey to win an Amazon gift card for $15. http://notspam.ru/legit?utm_source=haxxor&utm_medium=email</p>
+      
+      <div class="matchCategories">
+        <p><b>Word literal matches:</b></p>
+        <p id="literal_matches_num"></p>
+        <p id="matches"></p>
+      </div>
 
-      <button onClick="checkTextMessage()">Print match</button>
-      <p id="matches">Matches: </p>
+      <div class="matchCategories">
+        <p><b>Underscore matches (ends at _, fix):</b></p>
+        <p id="underscore_matches_num"></p>
+        <p id="underscore_matches"></p>
+      </div>
 
     </body>
 </html>
