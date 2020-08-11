@@ -57,7 +57,7 @@ function checkTextMessage() {
     wordLiteralMatches.length;
 
   // Matches of the `utm_` family
-  let underscoreMatches = text.match(/(utm_.*?)/);
+  let underscoreMatches = text.match(/(utm_.*?=)/g);
   document
     .getElementById('underscore_matches')
     .insertAdjacentHTML('beforeend', underscoreMatches.join(', '));
