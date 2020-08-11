@@ -1,14 +1,62 @@
 function checkTextMessage() {
+  // Text Message
   let text = document.getElementById('text-message').innerHTML;
-  let wordLiteralMatches = text.match(
-    /survey|win|won|go to|\$|gift|card|amazon|irs|tax|must|bit.ly|bank|account|locked|log|password|username|deletion|delete|bitcoin|btc|urgent|now/gi
-  );
+
+  // Word literal matches
+  commonSpamWords = [
+    'activity',
+    'address',
+    'amazon',
+    'account',
+    'bank',
+    'btc',
+    'bitcoin',
+    'bit.ly',
+    'card',
+    'claim',
+    'coupon',
+    'credit',
+    'debt',
+    'delete',
+    'deletion',
+    'free',
+    'gift',
+    'go to',
+    'irs',
+    'loan',
+    'locked',
+    'log',
+    'name',
+    'now',
+    'number',
+    'password',
+    'payment',
+    'prize',
+    'problem',
+    'social security',
+    'survey',
+    'suspicious',
+    'tax',
+    'urgent',
+    'username',
+    'win',
+    'won',
+    '$',
+  ];
+
+  let wordLiteralRegex = new RegExp(commonSpamWords.join('|'), 'gi');
+  let wordLiteralMatches = text.match(wordLiteralRegex) || [];
+
   document
     .getElementById('matches')
-    .insertAdjacentHTML('beforeend', wordLiteralMatches.join(', '));
+    .insertAdjacentHTML(
+      'beforeend',
+      wordLiteralMatches.slice(0, -1).join(', ')
+    );
   document.getElementById('literal_matches_num').innerHTML =
     wordLiteralMatches.length;
 
+  // Matches of the `utm_` family
   let underscoreMatches = text.match(/(utm_.*?)/);
   document
     .getElementById('underscore_matches')
